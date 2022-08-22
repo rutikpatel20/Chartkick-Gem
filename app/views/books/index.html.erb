@@ -39,6 +39,25 @@
     </div>
   </div>
   <!---------- Charts ----------->
-  <%= line_chart Book.group_by_day(:created_at).count %>
+  <hr>
+  <h1> Line chart </h1>
+  <%= line_chart Book.group(:price).count %>
+  <hr>
+  <h1> Pie chart - created_at </h1>
   <%= pie_chart Book.group(:created_at).count %>
+  <hr>
+  <h1> Pie chart - Authors </h1>
+  <%= pie_chart Book.group(:author_name).count %>
+  <hr>
+  <h1> Pie chart - Price - Donut </h1>
+  <%= pie_chart Book.group(:price).count, donut: true %>
+  <hr>
+  <h1> Column chart - created_at </h1>
+  <%= column_chart Book.group_by_hour_of_day(:created_at, format: "%l %P").count %>
+  <hr>
+  <h1> Column chart - Authors </h1>
+  <%= column_chart Book.group(:author_name).count %>
+  <hr>
+  <h1> Bar chart </h1>
+  <%= bar_chart Book.group(:author_name).count %>
 </div>
