@@ -38,4 +38,7 @@
       </table>
     </div>
   </div>
+  <!---------- Charts ----------->
+  <%= line_chart Book.group_by_day(:created_at).count %>
+  <%= pie_chart Book.group(:created_at).count %>
 </div>
